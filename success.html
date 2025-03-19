@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Success</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f7ff;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .success-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #28a745;
+        }
+
+        .details {
+            text-align: left;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #4a90e2;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #357ab7;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="success-container">
+        <h2>Appointment Booked Successfully!</h2>
+        <p>Your appointment has been confirmed. Here are the details:</p>
+        <div class="details">
+            <p><strong>Patient Name:</strong> {{ appointment.patient.name }}</p>
+            <p><strong>Doctor:</strong> {{ appointment.doctor.name }}</p>
+            <p><strong>Specialty:</strong> {{ appointment.doctor.speciality }}</p>
+            <p><strong>Date:</strong> {{ appointment.appointment_date|date:"F d, Y" }}</p>
+            <p><strong>Time:</strong> {{ appointment.appointment_date|time:"H:i A" }}</p>
+        </div>
+        <a href="{% url 'home' %}" class="btn">Back to Home</a>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Doctors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        input,
+        select,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            background-color: #4a90e2;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #357ab7;
+        }
+
+        .doctor-list {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .doctor-item {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Search for Doctors</h2>
+        <form action="{% url 'search_doctors' %}" method="GET">
+            <input type="text" name="specialty" placeholder="Enter specialty">
+            <button type="submit">Search</button>
+        </form>
+
+        <div class="doctor-list">
+            {% if doctors %}
+            {% for doctor in doctors %}
+            <div class="doctor-item">
+                <strong>{{ doctor.name }}</strong> - {{ doctor.speciality }}<br>
+                <em>{{ doctor.hospital.name }}</em>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>No doctors found. Try a different specialty.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>
